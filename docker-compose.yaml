@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - php
+    volumes_from:
+      - app-data
+  php:
+    build: .
+    ports:
+      - 9000
+      - 9003
+    volumes_from:
+      - app-data
+
+  app-data:
+    image: php:8.1-fpm
+    container_name: app-data-container
+    links:
+      - mysql
+    volumes:
+      - ./symfony-test/:/var/www/html/
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
