@@ -12,7 +12,7 @@ Ky eshte nje skeleton qe mundesh me e perdor per nje projekt te ri qe e fillon.
 | -  default.conf
 |
 | app
-| -  index.php <--- fajlli juaj i projektin
+| -  index.php <--- fajlli juaj i projektit
 |
 | Dockerfile
 | docker-compose.yaml
