@@ -23,7 +23,7 @@ services:
     links:
       - mysql
     volumes:
-      - ./symfony-test/:/var/www/html/
+      - ./app/:/var/www/html/
 
   mysql:
     image: mysql:5.7
