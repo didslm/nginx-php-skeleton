@@ -1,33 +1,30 @@
 version: '3'
 
 services:
-  nginx:
+  web:
+    container_name: nginx
     build: ./nginx
     ports:
-      - "80:80"
-    links:
-      - php
-    volumes_from:
-      - app-data
-  php:
-    build: .
-    ports:
-      - 9000
-      - 9003
-    volumes_from:
-      - app-data
-
-  app-data:
-    image: php:8.1-fpm
-    container_name: app-data-container
-    links:
-      - mysql
+      - "8000:80"
     volumes:
-      - ./app/:/var/www/html/
+      - ./book-app/:/var/www/html/
+    networks:
+      - internal
+  php:
+    container_name: app
+    build: .
+    networks:
+      - internal
+    volumes:
+      - ./book-app/:/var/www/html/
 
   mysql:
     image: mysql:5.7
     container_name: mysql-container
+    networks:
+      - internal
+    volumes:
+      - dbdata:/var/lib/mysql/
     ports:
       - "3306:3306"
     environment:
@@ -35,3 +32,11 @@ services:
       - MYSQL_DATABASE=test
       - MYSQL_USER=test
       - MYSQL_PASSWORD=test
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
