@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./book-app/:/var/www/html/
+      - ./app:/var/www/html/
     networks:
       - internal
   php:
@@ -16,7 +16,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./book-app/:/var/www/html/
+      - ./app/:/var/www/html/
 
   mysql:
     image: mysql:5.7
