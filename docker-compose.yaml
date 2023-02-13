@@ -3,20 +3,20 @@ version: '3'
 services:
   web:
     container_name: nginx
-    build: ./nginx
+    build: ./docker/nginx/
     ports:
       - "8000:80"
     volumes:
-      - ./app:/var/www/html/
+      - .:/var/www/html/
     networks:
       - internal
   php:
     container_name: app
-    build: .
+    build: ./docker/php/
     networks:
       - internal
     volumes:
-      - ./app/:/var/www/html/
+      - .:/var/www/html/
 
   mysql:
     image: mysql:5.7
