@@ -1,21 +1,6 @@
-# nginx-php-skeleton
-Ky eshte nje skeleton qe mundesh me e perdor per nje projekt te ri qe e fillon.
+# Nginx PHP Skeleton
+This is a PHP Nginx skeleton where you can use for your PHP project.
 
-### Hapat per ta pergaditur kete skeleton per projektin tuaj.
-1. Nje fajll ne direktoriumin `./nginx` i emeruar `default.conf` ku mund ta ndryshoni rreshtin 
-```
-  root /var/www/html/public; # Ky direktorium ndryshon ne baze se ku gjendet `index.php` fajlli ne projektin tuaj.
-```
-2. Duhet te krijoni nje direktorium se ku do ta fusni projektin tuaj. p.sh ./app, pastaj struktura do te duket si ne vijim.
-```
-| nginx
-| -  default.conf
-|
-| app
-| -  index.php <--- fajlli juaj i projektit
-|
-| Dockerfile
-| docker-compose.yaml
-```
-3. Duhet ta beni run komanden `docker-compose build && docker-compose up`.
-4. Mund ti qaseni projektit tuaj ne `http://localhost`
+1. All you need to have is `public` directory where your `index.php` file will live.
+2. Run `make build && make up` 
+3. Wuala you can see your project in [localhost](http://localhost:8000/). 
