@@ -25,3 +25,7 @@ build:
 ##make tests - Run unit tests
 tests:
 	./vendor/bin/phpunit tests/unit
+
+##make deps - Runs composer install through docker
+deps:
+	@(docker run --rm --interactive --tty --volume $$PWD:/app --volume ${COMPOSER_HOME:-$$HOME/.composer}:/tmp composer install --no-interaction --prefer-dist)

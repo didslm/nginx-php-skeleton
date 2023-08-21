@@ -12,7 +12,7 @@ services:
       - internal
   php:
     container_name: app
-    build: ./docker/php/
+    build: .
     networks:
       - internal
     volumes:
