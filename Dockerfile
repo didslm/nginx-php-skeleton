@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-cli
 RUN docker-php-ext-install pdo_mysql && pecl install xdebug && docker-php-ext-enable xdebug
 COPY ./docker/php/php-custom.ini /usr/local/etc/php/conf.d/php-custom.ini
 
